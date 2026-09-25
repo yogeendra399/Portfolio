@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yogeendra Kajjam — Full-Stack Developer</title>
+<meta name="description" content="Yogeendra Kajjam — Full-stack developer and final-year CSE student building software at the intersection of code, data & systems.">
+<meta name="author" content="Yogeendra Kajjam">
+<meta name="theme-color" content="#08090B">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yogeendra Kajjam — Full-Stack Developer">
+<meta property="og:description" content="Full-stack developer focused on applications, SQL, REST APIs, and enterprise software.">
+<meta property="og:url" content="https://yogeendra.dev/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80">
+<link rel="canonical" href="https://yogeendra.dev/">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=gradient-v1">
+</head>
+<body>
+
+<!-- inline theme-init to avoid flash of wrong theme -->
+<script>
+(function(){
+  var saved = null;
+  try { saved = localStorage.getItem('yk-theme'); } catch (e) {}
+  var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  var theme = saved || (prefersLight ? 'light' : 'dark');
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand" aria-label="Yogeendra Kajjam, home">
+      <span class="yk-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="30" height="30"><rect x="1" y="1" width="30" height="30" rx="8" fill="none" stroke="currentColor" stroke-width="1.4"/><text x="16" y="21" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="currentColor">YK</text></svg>
+      </span>
+      <span class="nav-domain">yogeendra.dev</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#top"><span class="nav-icon" aria-hidden="true">⌂</span>Home</a>
+      <a href="#work"><span class="nav-icon" aria-hidden="true">&lt;/&gt;</span>Work</a>
+      <a href="#skills"><span class="nav-icon" aria-hidden="true">◆</span>Skills</a>
+      <a href="#timeline"><span class="nav-icon" aria-hidden="true">▤</span>Timeline</a>
+      <a href="#contact"><span class="nav-icon" aria-hidden="true">✉</span>Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch color theme" aria-pressed="false">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="nav-menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#work">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow-role mono">Hello, I'm</p>
+
+      <h1 class="hero-headline hero-headline-code">
+        <span class="kw">const</span> <span class="var-name">Yogeendra</span> <span class="op">=</span><br class="lb">
+        <span class="fn">Developer</span><span class="punc">();</span>
+      </h1>
+
+      <p class="hero-comment mono">// full-stack developer · databases · systems</p>
+
+      <p class="hero-sub">I'm Yogeendra — a Computer Science Engineering student focused on full-stack applications, SQL, REST APIs, and enterprise software.</p>
+
+      <ul class="tech-chips" aria-label="Core technologies">
+        <li data-tip="Yes, I've read the 'Effective Java' chapters that matter.">JAVA</li>
+        <li data-tip="I think in joins before I think in JSON.">SQL</li>
+        <li data-tip="useState() is basically how I make decisions IRL.">REACT</li>
+        <li data-tip="Non-blocking, mostly. Unlike my sleep schedule.">NODE</li>
+        <li data-tip="ACID compliant. My commit habits, less so.">POSTGRESQL</li>
+        <li data-tip="Stateless by design, unlike me before coffee.">REST API</li>
+      </ul>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-gradient">Get in touch <span aria-hidden="true">→</span></a>
+        <a href="#work" class="btn btn-ghost">View projects <span class="mono" aria-hidden="true">&lt;/&gt;</span></a>
+      </div>
+
+      <div class="social-row" aria-label="Social links">
+        <a href="https://github.com/yogeendra399" class="social-icon" aria-label="Yogeendra on GitHub" title="GitHub" target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.93c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/yogeendra-kajjam-501388253/" class="social-icon" aria-label="Yogeendra on LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM.5 8.98h8.96V23.5H.5V8.98Zm14.5 0h6.44v1.98h.09c.9-1.62 3.09-3.33 6.36-3.33 6.8 0 8.06 4.36 8.06 10.03V23.5h-8.96v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.66 1.79-2.66 3.65v7.02h-8.96V8.98Z" transform="scale(0.7)"/></svg>
+        </a>
+        <a href="mailto:yogeendra7761@gmail.com" class="social-icon" aria-label="Email Yogeendra" title="Email">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m3 6 9 7 9-7"/></svg>
+        </a>
+      </div>
+
+      <div class="availability-card" role="note">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div>
+          <p class="avail-title">Open to opportunities</p>
+          <p class="avail-sub">Full-stack · Backend · Database roles</p>
+          <p class="avail-loc mono">Vijayawada, India</p>
+        </div>
+      </div>
+
+      <div class="terminal" id="terminal">
+        <div class="terminal-bar">
+          <span class="mock-dots"><span></span><span></span><span></span></span>
+          <span class="terminal-title mono">yogeendra@dev: ~</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <p class="tline">Welcome. Type <span class="tcmd">help</span> to poke around.<span class="tcursor" aria-hidden="true"></span></p>
+        </div>
+        <form class="terminal-input-row" id="terminalForm">
+          <span class="prompt mono" aria-hidden="true">&gt;</span>
+          <label for="terminalInput" class="sr-only">Type a command</label>
+          <input type="text" id="terminalInput" class="terminal-input mono" autocomplete="off" spellcheck="false" placeholder="type a command..." aria-label="Terminal command input">
+        </form>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="cube-stage" id="cubeStage">
+        <div class="orbit-ring ring-a"></div>
+        <div class="orbit-ring ring-b"></div>
+        <div class="glow glow-indigo"></div>
+        <div class="glow glow-cyan"></div>
+
+        <div class="profile-frame">
+          <div class="profile-frame-inner">
+            <span class="profile-mark mono">YK</span>
+          </div>
+        </div>
+
+        <div class="skill-float sf-1">
+          <span class="sf-icon mono">JS</span>
+          <span class="sf-text">
+            <span class="sf-title">JavaScript</span>
+            <span class="sf-sub">ES6+, REST APIs</span>
+          </span>
+        </div>
+        <div class="skill-float sf-2">
+          <span class="sf-icon mono">⬢</span>
+          <span class="sf-text">
+            <span class="sf-title">Node.js</span>
+            <span class="sf-sub">Express, MongoDB</span>
+          </span>
+        </div>
+        <div class="skill-float sf-3">
+          <span class="sf-icon mono">DB</span>
+          <span class="sf-text">
+            <span class="sf-title">PostgreSQL</span>
+            <span class="sf-sub">Schema design, SQL</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="section-inner about-grid">
+    <div class="about-main">
+      <p class="section-kicker mono">01 — About</p>
+      <h2 class="section-heading">Useful software starts with a clear model.</h2>
+      <p class="about-p">Most of my work lives where relational databases meet full-stack applications — the point where a schema decision quietly determines how an interface will feel a year from now. I care about getting that model right before writing the screens on top of it.</p>
+      <p class="about-p">That means thinking in schema design and normalized tables before REST APIs, and building on the MERN stack with SQL underneath rather than around it. I've paired that with CI/CD pipelines in Jenkins and Docker, and used Power BI to turn the same structured data into decisions non-engineers can act on.</p>
+      <p class="about-p">I'm drawn to data-driven applications — software that doesn't just display information but is shaped by it.</p>
+    </div>
+
+    <aside class="about-note">
+      <p class="mono note-label">YK / NOTE 01</p>
+      <p class="note-line">Code + data + systems.</p>
+      <p class="note-sub">Turning structured thinking into software people can use.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="skills" id="skills">
+  <div class="section-inner">
+    <p class="section-kicker mono">02 — Skills</p>
+    <h2 class="section-heading">The stack, by how I use it.</h2>
+
+    <div class="bento">
+      <article class="bento-card bento-lg">
+        <h3>Database Engineering</h3>
+        <p class="bento-desc">Where most problems actually get solved.</p>
+        <ul class="tag-list">
+          <li>SQL</li><li>PostgreSQL</li><li>MySQL</li><li>Schema design</li><li>Joins</li><li>Indexes</li><li>Views</li><li>Query optimization</li>
+        </ul>
+      </article>
+
+      <article class="bento-card">
+        <h3>Application Development</h3>
+        <ul class="tag-list">
+          <li>Java</li><li>Python</li><li>MongoDB</li><li>Express</li><li>React</li><li>Node.js</li><li>REST APIs</li>
+        </ul>
+      </article>
+
+      <article class="bento-card">
+        <h3>Enterprise &amp; Reporting</h3>
+        <ul class="tag-list">
+          <li>Power BI</li><li>KPI dashboards</li><li>Requirement analysis</li><li>SDLC</li><li>Stakeholder-driven development</li>
+        </ul>
+      </article>
+
+      <article class="bento-card bento-wide">
+        <h3>DevOps &amp; Testing</h3>
+        <ul class="tag-list">
+          <li>Git</li><li>GitHub</li><li>Jenkins</li><li>Docker</li><li>Postman</li><li>Selenium</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="work" id="work">
+  <div class="section-inner">
+    <p class="section-kicker mono">03 — Work</p>
+    <h2 class="section-heading">Selected projects.</h2>
+    <p class="section-lede">Built as products with a real workflow underneath, not resume bullet points.</p>
+
+    <div class="projects">
+      <article class="project-card project-card-horizontal" tabindex="0">
+        <div class="project-mock project-visual">
+          <div class="mock-window project-image-shell">
+            <img class="project-image" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Students collaborating on a course management platform" loading="lazy">
+          </div>
+        </div>
+        <div class="project-content">
+          <p class="project-year mono">2023</p>
+          <h3 class="project-name">Student Course Management System</h3>
+          <div class="project-copy">
+            <p><strong>Brief:</strong> A role-based platform for managing courses, users, enrollments, dashboards, and reminders.</p>
+            <p><strong>Why it is necessary:</strong> It gives students, teachers, and administrators one reliable workflow instead of disconnected spreadsheets and manual updates.</p>
+            <p><strong>Conclusion:</strong> A structured academic platform that improves visibility, access control, and day-to-day course operations.</p>
+          </div>
+          <div class="project-tools"><span class="mono">Tools used</span><ul class="tag-list tag-list-sm"><li>MERN Stack</li><li>SQL</li><li>REST API</li><li>Jenkins</li><li>Docker</li></ul></div>
+        </div>
+      </article>
+
+      <article class="project-card project-card-horizontal" tabindex="0">
+        <div class="project-mock project-visual">
+          <div class="mock-window project-image-shell">
+            <img class="project-image" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80" alt="Doctor consulting with a patient in a clinic" loading="lazy">
+          </div>
+        </div>
+        <div class="project-content">
+          <p class="project-year mono">2024</p>
+          <h3 class="project-name">Online Health Appointment Management System</h3>
+          <div class="project-copy">
+            <p><strong>Brief:</strong> A booking workflow connecting patients, doctors, availability, and appointment records.</p>
+            <p><strong>Why it is necessary:</strong> It reduces scheduling friction and prevents avoidable conflicts caused by phone-based or manual booking.</p>
+            <p><strong>Conclusion:</strong> A dependable appointment experience with validated data, clearer schedules, and faster booking.</p>
+          </div>
+          <div class="project-tools"><span class="mono">Tools used</span><ul class="tag-list tag-list-sm"><li>REST API</li><li>SQL</li><li>Postman</li><li>Selenium</li></ul></div>
+        </div>
+      </article>
+
+      <article class="project-card project-card-horizontal" tabindex="0">
+        <div class="project-mock project-visual">
+          <div class="mock-window project-image-shell">
+            <img class="project-image" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Analytics dashboard showing charts and sales metrics" loading="lazy">
+          </div>
+        </div>
+        <div class="project-content">
+          <p class="project-year mono">2024</p>
+          <h3 class="project-name">Sales Analysis Dashboard</h3>
+          <div class="project-copy">
+            <p><strong>Brief:</strong> A reporting layer that transforms raw sales data into KPIs, trends, and decision-ready insights.</p>
+            <p><strong>Why it is necessary:</strong> It replaces slow manual reporting with a consistent view of performance that teams can act on quickly.</p>
+            <p><strong>Conclusion:</strong> An automated analytics workflow that makes sales performance easier to understand and monitor.</p>
+          </div>
+          <div class="project-tools"><span class="mono">Tools used</span><ul class="tag-list tag-list-sm"><li>Power BI</li><li>SQL</li><li>Python</li></ul></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section class="timeline" id="timeline">
+  <div class="section-inner">
+    <p class="section-kicker mono">04 — Timeline</p>
+    <h2 class="section-heading">Education &amp; certifications.</h2>
+
+    <ol class="tl-list">
+      <li class="tl-item">
+        <div class="tl-marker"><span class="tl-dot"></span><span class="tl-line"></span></div>
+        <div class="tl-content">
+          <p class="tl-date mono">2022 — 2026</p>
+          <h3>KL University, Vijayawada</h3>
+          <p class="tl-role">B.Tech, Computer Science and Engineering</p>
+          <p class="tl-meta mono">CGPA 9.26</p>
+          <p class="tl-commit mono">commit: 4yrs — learned that "it works on my machine" isn't a deployment strategy</p>
+        </div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-marker"><span class="tl-dot"></span><span class="tl-line"></span></div>
+        <div class="tl-content">
+          <p class="tl-date mono">2020 — 2022</p>
+          <h3>Krishnaveni Junior College, Sattenapalli</h3>
+          <p class="tl-role">Intermediate, MPC</p>
+          <p class="tl-meta mono">CGPA 8.39</p>
+          <p class="tl-commit mono">commit: initial setup — physics, chemistry, and a growing suspicion I liked code more</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="cert-row">
+      <span class="cert-chip">Salesforce Certified Platform Developer 1</span>
+      <span class="cert-chip">Salesforce AI Associate</span>
+      <span class="cert-chip">EX183 — Red Hat Certified</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="section-inner contact-inner">
+    <p class="section-kicker mono">05 — Contact</p>
+    <h2 class="contact-heading">Let's build something that ships.</h2>
+
+    <div class="contact-grid">
+      <div class="contact-side">
+        <div class="contact-links">
+          <a class="contact-row" href="mailto:yogeendra7761@gmail.com">
+            <span class="contact-label mono">Email</span>
+            <span class="contact-value">yogeendra7761@gmail.com</span>
+          </a>
+          <a class="contact-row" href="tel:+917675953476">
+            <span class="contact-label mono">Phone</span>
+            <span class="contact-value">+91 76759 53476</span>
+          </a>
+          <div class="contact-row contact-row-static">
+            <span class="contact-label mono">Location</span>
+            <span class="contact-value">Vijayawada, India</span>
+          </div>
+          <div class="contact-row contact-row-static">
+            <span class="contact-label mono">Status</span>
+            <span class="contact-value">Available for full-stack, backend &amp; database roles</span>
+          </div>
+        </div>
+
+        <div class="contact-social">
+          <a class="social-placeholder" href="https://www.linkedin.com/in/yogeendra-kajjam-501388253/" aria-label="Yogeendra on LinkedIn" target="_blank" rel="noopener noreferrer">
+            <span>LinkedIn</span><span class="mono placeholder-tag">open profile</span>
+          </a>
+          <a class="social-placeholder" href="https://github.com/yogeendra399" aria-label="Yogeendra on GitHub" target="_blank" rel="noopener noreferrer">
+            <span>GitHub</span><span class="mono placeholder-tag">open profile</span>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <p class="form-note mono">Opens your email app with this filled in — nothing is sent from here directly.</p>
+        <div class="form-row">
+          <label for="cfName" class="sr-only">Your name</label>
+          <input type="text" id="cfName" class="form-input" placeholder="Your name" required>
+        </div>
+        <div class="form-row">
+          <label for="cfEmail" class="sr-only">Your email</label>
+          <input type="email" id="cfEmail" class="form-input" placeholder="Your email" required>
+        </div>
+        <div class="form-row">
+          <label for="cfSubject" class="sr-only">Subject</label>
+          <input type="text" id="cfSubject" class="form-input" placeholder="Subject" required>
+        </div>
+        <div class="form-row">
+          <label for="cfMessage" class="sr-only">Message</label>
+          <textarea id="cfMessage" class="form-input form-textarea" rows="5" placeholder="Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-gradient form-submit">
+          Open in email app <span aria-hidden="true">→</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="section-inner footer-inner">
+    <span class="yk-mark yk-mark-sm" aria-hidden="true">YK</span>
+    <p class="footer-text">Yogeendra Kajjam — designed &amp; built from scratch. <span class="footer-hint mono">(view-source is open, by the way)</span></p>
+    <p class="footer-year mono">© <span id="year"></span></p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
