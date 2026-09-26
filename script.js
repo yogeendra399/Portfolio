@@ -25,6 +25,7 @@
     root.setAttribute('data-theme', theme);
     storeTheme(theme);
     if (themeBtn) themeBtn.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+    if (window.setMirrorAccent) window.setMirrorAccent(theme === 'light' ? '#4F46E5' : '#38BDF8');
   }
 
   if (themeBtn) {
@@ -270,5 +271,98 @@
       konamiPos = (key === konami[0]) ? 1 : 0;
     }
   });
+
+  /* ---------------- Three.js mirror backdrop ---------------- */
+  var backdropCanvas = document.getElementById('bg-canvas');
+  if (backdropCanvas) {
+    if (!window.THREE) {
+      console.warn('Mirror backdrop unavailable: Three.js did not load.');
+    } else {
+      try {
+        var THREE = window.THREE;
+        var renderer = new THREE.WebGLRenderer({ canvas: backdropCanvas, alpha: true, antialias: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.z = 7;
+
+        var geometry = new THREE.IcosahedronGeometry(2.6, 1);
+        var material = new THREE.MeshBasicMaterial({
+          color: currentTheme() === 'light' ? 0x4F46E5 : 0x38BDF8,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.24
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        function resizeBackdrop() {
+          var width = window.innerWidth;
+          var height = window.innerHeight;
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          renderer.setSize(width, height);
+          mesh.position.set(width < 720 ? 0 : 2.2, -0.6, 0);
+          mesh.scale.setScalar(width < 720 ? 0.72 : 1);
+          renderer.render(scene, camera);
+        }
+
+        window.setMirrorAccent = function (hex) {
+          material.color.set(hex);
+        };
+
+        var backdropFrame = 0;
+        function renderBackdrop() {
+          if (document.hidden || reduceMotion) {
+            backdropFrame = 0;
+            renderer.render(scene, camera);
+            return;
+          }
+          mesh.rotation.x += 0.0009;
+          mesh.rotation.y += 0.0013;
+          renderer.render(scene, camera);
+          backdropFrame = window.requestAnimationFrame(renderBackdrop);
+        }
+
+        function startBackdrop() {
+          if (!backdropFrame && !document.hidden && !reduceMotion) {
+            backdropFrame = window.requestAnimationFrame(renderBackdrop);
+          }
+        }
+
+        window.addEventListener('resize', resizeBackdrop, { passive: true });
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) {
+            if (backdropFrame) window.cancelAnimationFrame(backdropFrame);
+            backdropFrame = 0;
+          } else {
+            startBackdrop();
+          }
+        });
+        if (motionQuery && motionQuery.addEventListener) {
+          motionQuery.addEventListener('change', function (event) {
+            reduceMotion = event.matches;
+            if (reduceMotion) {
+              if (backdropFrame) window.cancelAnimationFrame(backdropFrame);
+              backdropFrame = 0;
+              renderer.render(scene, camera);
+            } else {
+              startBackdrop();
+            }
+          });
+        }
+
+        resizeBackdrop();
+        if (reduceMotion) {
+          renderer.render(scene, camera);
+        } else {
+          startBackdrop();
+        }
+      } catch (error) {
+        console.warn('Mirror backdrop unavailable: WebGL initialization failed.', error);
+      }
+    }
+  }
 
 })();

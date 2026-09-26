@@ -38,6 +38,10 @@
   --panel-shadow: 0 14px 34px -24px rgba(0,0,0,.9), 0 4px 16px -8px rgba(56,189,248,.16);
   --panel-shadow-hover: 0 24px 52px -26px rgba(0,0,0,.95), 0 8px 26px -10px rgba(56,189,248,.42), 0 0 18px -8px rgba(129,140,248,.38);
   --panel-shadow-active: 0 18px 38px -18px rgba(0,0,0,.96), 0 0 30px -6px rgba(56,189,248,.62), 0 0 12px -4px rgba(129,140,248,.54);
+  --mirror-surface: linear-gradient(155deg, rgba(255,255,255,.16), rgba(129,140,248,.075) 48%, rgba(56,189,248,.055));
+  --mirror-edge: rgba(203,213,255,.28);
+  --mirror-sheen: rgba(255,255,255,.24);
+  --mirror-chip: linear-gradient(145deg, rgba(255,255,255,.13), rgba(129,140,248,.08));
   --page-gradient:
     radial-gradient(circle at 8% 4%, rgba(79,70,229,.24), transparent 32%),
     radial-gradient(circle at 92% 18%, rgba(14,165,233,.16), transparent 30%),
@@ -63,6 +67,10 @@
   --panel-shadow: 0 14px 34px -24px rgba(17,24,39,.28), 0 4px 12px -8px rgba(17,24,39,.12);
   --panel-shadow-hover: 0 24px 52px -26px rgba(17,24,39,.3), 0 8px 20px -10px rgba(79,70,229,.2);
   --panel-shadow-active: 0 18px 38px -18px rgba(17,24,39,.24), 0 0 20px -8px rgba(79,70,229,.28);
+  --mirror-surface: linear-gradient(155deg, rgba(255,255,255,.82), rgba(199,210,254,.62) 48%, rgba(186,230,253,.68));
+  --mirror-edge: rgba(79,70,229,.34);
+  --mirror-sheen: rgba(255,255,255,.9);
+  --mirror-chip: linear-gradient(145deg, rgba(255,255,255,.9), rgba(199,210,254,.58));
   --page-gradient:
     radial-gradient(circle at 8% 2%, rgba(129,140,248,.22), transparent 30%),
     radial-gradient(circle at 92% 16%, rgba(56,189,248,.18), transparent 28%),
@@ -84,11 +92,70 @@ body{
   line-height: 1.5;
   transition: background var(--dur-med) var(--ease), color var(--dur-med) var(--ease);
 }
+#bg-canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  opacity:.25;
+  pointer-events:none;
+}
+[data-theme="light"] #bg-canvas{ opacity:.12; }
+body > :not(#bg-canvas){ position:relative; z-index:1; }
 img,svg{ display:block; max-width:100%; }
 a{ color: inherit; text-decoration: none; }
 ul{ list-style:none; margin:0; padding:0; }
 button{ font: inherit; color: inherit; background:none; border:none; cursor:pointer; }
 .mono{ font-family: var(--font-mono); }
+
+.mirror{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:var(--mirror-surface);
+  border-color:var(--mirror-edge);
+  backdrop-filter:blur(16px) saturate(145%);
+  -webkit-backdrop-filter:blur(16px) saturate(145%);
+}
+.mirror::before{
+  content:'';
+  position:absolute;
+  z-index:2;
+  top:-70%;
+  left:-65%;
+  width:48%;
+  height:240%;
+  pointer-events:none;
+  background:linear-gradient(100deg, transparent, var(--mirror-sheen), transparent);
+  transform:translateX(0) rotate(20deg);
+  opacity:.7;
+  mix-blend-mode:screen;
+  border-radius:inherit;
+  transition:opacity .12s var(--ease);
+}
+.mirror > *{ position:relative; z-index:1; }
+.mirror::before{ animation:mirror-sheen 4.2s ease-in-out infinite; }
+@keyframes mirror-sheen{
+  0%,12%{ transform:translateX(0) rotate(20deg); }
+  62%,100%{ transform:translateX(416%) rotate(20deg); }
+}
+.mirror:hover::before,
+.mirror:focus-within::before{
+  opacity:1;
+  animation-duration:2.4s;
+}
+
+.tech-chips li,
+.tag-list li,
+.form-input,
+.terminal-bar,
+.mock-window{
+  background:var(--mirror-chip);
+  border-color:var(--mirror-edge);
+  backdrop-filter:blur(10px) saturate(140%);
+  -webkit-backdrop-filter:blur(10px) saturate(140%);
+}
 
 /* Shared elevation keeps cards and panels visually grounded. */
 .availability-card,
@@ -127,6 +194,7 @@ button{ font: inherit; color: inherit; background:none; border:none; cursor:poin
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{ animation-duration: .001s !important; animation-iteration-count:1 !important; transition-duration: .001s !important; scroll-behavior:auto !important; }
   .bento-card, .project-card{ transform:none !important; }
+  .mirror::before{ animation:none !important; }
 }
 
 .skip-link{
@@ -787,3 +855,18 @@ a.contact-row:hover{ color: var(--accent); padding-left: 6px; }
   .tl-item{ grid-template-columns: 20px 1fr; gap: 14px; }
   .btn{ flex:1; }
 }
+
+.mirror{
+  background:var(--mirror-surface);
+  border-color:var(--mirror-edge);
+}
+
+.tech-chips li,
+.tag-list li,
+.form-input,
+.terminal-bar,
+.mock-window{
+  background:var(--mirror-chip);
+  border-color:var(--mirror-edge);
+}
+.skill-float.mirror{ backdrop-filter:blur(16px) saturate(145%); }
